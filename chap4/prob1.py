@@ -1,0 +1,32 @@
+import random as rd
+mood = rd.randrange(6)
+print("I sense your energy. Your true emotions are coming across my screen.")
+print("")
+print("You are...")
+print("")
+if mood == 0
+  print("----------")
+  print("l         l")
+  print("l 0     0 l")
+  print("l    <    l")
+  print("l  '.  .' l")
+  print("l    ''   l")
+  print("----------")
+elif mood == 1
+  print("----------")
+  print("l         l")
+  print("l 0     0 l")
+  print("l    <    l")
+  print("l  -----  l")
+  print("l         l")
+  print("----------")
+elif mood == 2
+  print("----------")
+  print("l          l")
+  print("l -.-  -.- l")
+  print("l  '  < '  l")
+  print("l    ...   l")
+  print("l  .'   ', l")
+  print("-----------")
+else:
+  print("illegal mood value")
