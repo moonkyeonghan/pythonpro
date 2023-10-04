@@ -6,5 +6,14 @@ print("please enter the requested, monthly costs. Since yor're rich, ignore penn
 print("")
 print("")
 
-car=input("Lamborghini Tune-Ups")
-car=
+car=int(input("Lamborghini Tune-Ups : "))
+rent= int(input("Manhattan Apartment : "))
+jet= int(input("Private Jet Rental : " ))
+gifts = int(input("Gifts : "))
+food = int(input("Dining Out : "))
+staff = int(input("Staff (butlers, chef, driver, assistant): "))
+guru = int(input("Personal Guru and Coach : "))
+games = int(input("Computer Games : "))
+
+print("")
+print("Grand total : ",car+rent+jet+gifts+food+staff+guru+games )
