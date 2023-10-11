@@ -26,4 +26,3 @@ print("you add the contents of the chest to your inventory")
 print("Your inventory is now")
 inventory += chest
 print (inventory[ : ])
-:
