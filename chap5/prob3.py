@@ -1,4 +1,4 @@
-mport random as rd
+import random as rd
 
 print ('Guess the word !!!')
 print("In this game, the program selects a word at random, and the player's objective is io guess the chosen word" )
