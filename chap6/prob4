@@ -1,0 +1,100 @@
+import random as rd
+hangman = ("python","catholic","banana","apple","university","daegu")
+word = rd.choice(hangman)
+useword = []
+guess = ""
+wordlength = ""
+false = 6
+while True:
+  print("word length = ",len(word))
+  if false == 6:
+    print("""
+     ---------
+     |       |
+     I
+     I
+     I
+    _I_
+    """)
+  elif false == 5:
+    print("""
+     ---------
+     |       |
+     I       O
+     I
+     I
+    _I_
+    """)
+  elif false == 4:
+    print("""
+     ---------
+     |       |
+     I       O
+     I       |     
+     I
+    _I_
+    """)
+  elif false == 3:
+    print("""
+     ---------
+     |       |
+     I       O
+     I      /|     
+     I
+    _I_
+    """)
+  elif false == 2:
+    print("""
+     ---------
+     |       |
+     I       O
+     I      /|\    
+     I
+    _I_
+    """)
+  elif false == 1:
+    print("""
+     ---------
+     |       |
+     I       O
+     I      /|\    
+     I      /      
+    _I_
+    """)
+  else:
+    print("""
+     ---------
+     |       |
+     I       O
+     I      /|\    
+     I      / \    
+    _I_
+    """)
+    print("game over")
+    print("the word was: ",word)
+    break
+  wordlength = 0
+  for i in word:
+    if i in useword:
+      print(i,end="")
+    else:
+      print("_ " , end="")
+      wordlength += 1
+  print("\n")
+  if wordlength == 0:
+    print("Success")
+    break
+  print("you have used the following letters:")
+  print(useword)
+  guess = input("Guess a letter: ")
+  if guess in useword:
+    print("You already guessed this letter")
+  elif guess not in word:
+    useword.append(guess)
+    print("Wrong")
+    false -=1
+  else:
+    print("Yes!",guess,"is in the word")
+    useword.append(guess)
+  print()
+  
