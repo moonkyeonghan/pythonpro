@@ -1,25 +1,73 @@
-print("Welcome to the gratest intellectual of all time: Tic-Tac-Toc.")
-print("This will be a shadown between your human brain and my silicon processor.\n")
-print("You will make your move known by entering a number, 0 - 8. The number will correspond to the board position as illustrated:\n")
+import random
 
-print("\t\t 0 | 1 | 2")
-print("\t\t-----------")
-print("\t\t 3 | 4 | 5")
-print("\t\t-----------")
-print("\t\t 6 | 7 | 8")
-print("Prepare yourself, human. The battle is about to begin.\n")
+def background(board):
+  for i in range(0, 9, 3):
+    print(" | ".join(board[i:i+3]))
+    if i < 6:
+      print("-" * 9)
 
-first = input("Do you require the first move? (y/n):")
+def checkwin(board, playermark):
+  for i in range(0, 9 ,3):
+    if all(board[mark] == playermark for mark in range(i,i+3)):
+      return True
+  for i in range(3):
+    if all(board[mark] == playermark for mark in range(i,9,3)):
+      return True
+  if all(board[i] == playermark for i in range(0,9,4)) or all(board[i] == playermark for i in range(2,7,2)):
+    return True
+  return False
 
-if first == "y":
-  
+def fullboard(board):
+  return all(mark != " " for mark in board)
 
-def background():
-  i = 0
-  row =0
-  col =0
-  for row in range(3):
-    for col in range(3):
-      print(i)
-      i += 1
-  background()
+def player_move(board):
+  while True:
+    move = int(input("Enter your move (0-8): "))
+    if 0 <= move <= 8 and board[move] == ' ':
+        return move
+    else:
+      print("Invalid move. Try again.")
+
+def computer_move(board):
+  while True:
+      move = random.randint(0, 8)
+      if board[move] == ' ':
+          return move
+def main():
+  board = [' ' for _ in range(9)]
+  players = ['X', 'O']
+  firstplayer= input("Do you want to go first? (y/n): ")
+  if firstplayer == 'y':
+    current_player = "X"
+  else:
+    current_player = "O"
+
+  print("Welcome to Tic-Tac-Toe!")
+  background([str(i) for i in range(9)])
+  background(board)
+
+  for _ in range(9):
+      if current_player == 'X':
+        move = player_move(board)
+      else:
+        move = computer_move(board)
+        
+      board[move] = current_player
+      background([str(i) for i in range(9)])
+      background(board)
+
+      if checkwin(board, current_player):
+        if current_player == 'X':
+          print("You won!")
+          break
+        else:
+          print("You lost!")
+          break
+      if fullboard(board):
+          print("It's a tie!")
+          break
+
+      current_player = 'X' if current_player == 'O' else 'O'
+
+if __name__ == "__main__":
+  main()
