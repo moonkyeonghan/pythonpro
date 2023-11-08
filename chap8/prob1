@@ -1,0 +1,41 @@
+text_file = open("read_it.txt","r")
+print("Opening and closing the file.\n")
+print("Reading characters from the file.")
+print(text_file.read(1))
+print(text_file.read(5))
+print()
+
+text_file = open("read_it.txt","r")
+print("Reading the entire file at once")
+whole_thing = text_file.read()
+print(whole_thing)
+print()
+
+text_file = open("read_it.txt","r")
+print("Reading one line at line")
+print(text_file.readline(1))
+print(text_file.readline(5))
+print()
+
+text_file = open("read_it.txt","r")
+print("Reading one line at a time")
+print(text_file.readline())
+print(text_file.readline())
+print(text_file.readline())
+print()
+
+text_file = open("read_it.txt","r")
+print("Reading the entire file into a list")
+lines = text_file.readlines()
+print(lines)
+print(len(lines))
+for i in lines:
+  print(i)
+print()
+
+text_file = open("read_it.txt","r")
+print("Looping through the file, line by line")
+for line in text_file:
+  print(line)
+  print()
+
