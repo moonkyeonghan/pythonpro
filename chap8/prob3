@@ -1,0 +1,14 @@
+print("Input your string......")
+text_file = open("write.txt","w")
+while True:
+  inputfile = input(">>")
+  if(inputfile == 'Q'):
+    break
+  text_file.write(inputfile+'\n')
+
+text_file.close()
+
+text_file = open("write.txt", "r")
+whole_thing =text_file.read()
+print("Your input are below..")
+print(whole_thing)
