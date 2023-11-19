@@ -1,0 +1,13 @@
+import pickle
+variety = ["sweet","hot","dill"]
+pickle_file = open("pickle1.dat","wb")
+pickle.dump(variety, pickle_file)
+
+pickle_file = open("pickle.dat","rb")
+variety = pickle.load(pickle_file)
+print(variety)
+
+import shelve
+pickle = shelve.open("pickle2.dat")
+pickle["variety"] = ["sweet","hot","dill"]
+pickle.sync()
