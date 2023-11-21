@@ -1,14 +1,36 @@
-print("Input your string......")
-text_file = open("write.txt","w")
-while True:
-  inputfile = input(">>")
-  if(inputfile == 'Q'):
-    break
-  text_file.write(inputfile+'\n')
+import pickle
+import shelve
 
-text_file.close()
+print("Pickle lises.\n")
+print("Unpacking lists")
+variety = ["sweet","hot","dill"]
+shape = ["whole","spear","chip"]
+brand = ["Claussen","Heinz","Ulassic"]
+pickle.dump(variety, open("variety.p","wb"))
+pickle.dump(shape, open("shape.p","wb"))
+pickle.dump(brand, open("brand.p","wb"))
+loaded_variety = pickle.load( open("variety.p","rb"))
+loaded_shape = pickle.load( open("shape.p","rb"))
+loaded_brand = pickle.load( open("brand.p","rb"))
 
-text_file = open("write.txt", "r")
-whole_thing =text_file.read()
-print("Your input are below..")
-print(whole_thing)
+print(loaded_variety)
+print(loaded_shape)
+print(loaded_brand)
+
+print("\nShelving listss\n")
+print("Retrieving the lists from a shelved file:")
+variety = ["sweet","hot","dill"]
+shape = ["whole","spear","chip"]
+brand = ["Claussen","Heinz","Ulassic"]
+db = shelve.open("data_shelve.db")
+db["variety"] = variety
+db["shape"] = shape
+db["brand"] = brand
+db.close()
+db = shelve.open("data_shelve.db")
+loaded_variety = db["variety"]
+loaded_shape = db["shape"]
+loaded_brand = db["brand"]
+print("variety - ",loaded_variety)
+print("shape - ", loaded_shape)
+print("brand - ", loaded_brand)
