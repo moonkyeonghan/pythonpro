@@ -1,0 +1,36 @@
+import random
+
+def play_trivia(data):
+    random.shuffle(data)
+    for i in range(len(data)):
+        title, question, options, correct_answer, explanation = data[i]
+        print("\nTitle: {}\nQuestion: {}".format(title, question))
+        for j in range(len(options)):
+            print(j+1 ,options[j])
+        user_answer = input("Your answer: ")
+        if user_answer == correct_answer:
+            print("Correct!")
+        else:
+            print("Wrong! The correct answer is {}".format(correct_answer))
+        print("Explanation: {}". format(explanation))
+
+if __name__ == "__main__":
+    trivia_data = [
+        ["An Episode You Can't Refuse",
+         "Let's say you turn state's evidence and need to 'get on the lamb.' If you wait /too long, what will happen?",
+         ["You'll end up on the sheep", "You'll end up on the cow", "You'll end up on the goat", "You'll end up on the emu"],
+         "You'll end up on the sheep", ""],
+      
+      ["On the Run With a Mammal",
+         "What will happen if you turn state's evidence and need to 'get on the lamb' too quickly?",
+         ["You'll end up on the rabbit", "You'll end up on the squirrel", "You'll end up on the raccoon", "You'll end up on the armadillo"],
+         "You'll end up on the rabbit", ""],
+    
+  ["Country capitials",
+  "What is the capital of Korea?",
+  [ "Seoul", "Busan", "Daegu", "Incheon"],
+  "Seoul", ""
+  ],
+    ]
+
+    play_trivia(trivia_data)
