@@ -1,0 +1,65 @@
+class Critter:
+  mood_level = 10
+  def __init__(self, name):
+      self.name = name
+      
+  def talk(self):
+      Critter.mood_level -= 3
+      self.getmood()
+
+  def feed(self):
+      print("\t1-meat")
+      print("\t2-feed")
+      print("\t3-vegetable")
+      choose_food = input("\twhat choice food?")
+      if choose_food == "1":
+        self.food(1)
+      elif choose_food == "2":
+        self.food(2)
+      elif choose_food == "3":
+        self.food(3)
+
+  def play(self):
+      Critter.mood_level += 2
+      print("Wheeee!\n")
+
+  def getmood(self):
+      if Critter.mood_level > 8:
+          print("I'm", self.name, "and I feel so lazy today.\n")
+      elif 5 < Critter.mood_level <= 8:
+          print("I'm", self.name, "and I feel a bit annoyed now.\n")
+      elif 3 < Critter.mood_level <= 5:
+          print("I'm", self.name, "and I feel quite annoyed now.\n")
+      else:
+          print("I'm", self.name, "and I feel so mad now.\n")
+
+  def start_caretaker(self):
+      while True:
+          print("\tCritter Caretaker\n")
+          print("\t0-Quit")
+          print("\t1-Listen to your critter")
+          print("\t2-Feed your critter")
+          print("\t3-Play with your critter\n")
+
+          choice = input("Make a choice:")
+          if choice == "0":
+              break
+          elif choice == "1":
+              self.talk()
+          elif choice == "2":
+              self.feed()
+          elif choice == "3":
+              self.play()
+  def food(self, number):
+    if number == 1:
+      Critter.mood_level += 3
+      print("it's best food\n")
+    elif number == 2:
+      Critter.mood_level += 2
+      print("it's taste\n")
+    elif number == 3:
+      Critter.mood_level += 1
+      print("it's soso \n")
+    
+crit = Critter(input("What do you want to name your critter?:"))
+crit.start_caretaker()
